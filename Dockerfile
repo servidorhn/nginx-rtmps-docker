@@ -1,6 +1,6 @@
 FROM debian:bullseye-slim
 
-LABEL maintainer="Multiple Stream"
+LABEL maintainer="Multiple Restreaming"
 
 # Update and Load initial packages
 RUN apt-get update && \
@@ -25,25 +25,18 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
 #    ln -sf /dev/stdout /var/log/stunnel4/stunnel.log
     
 #Setup Streaming Services Details
+
 #Facebook
 ENV FACEBOOK_URL rtmp://localhost:19350/rtmp/
 ENV FACEBOOK_KEY ""
 
-#Restream.io
-ENV RESTREAM_URL rtmp://live.restream.io/live/
-ENV RESTREAM_KEY ""
+#Twitter
+ENV TWITTER_URL rtmp://va.pscp.tv:80/x/
+ENV TWITTER_KEY ""
 
 #YouTube
 ENV YOUTUBE_URL rtmp://a.rtmp.youtube.com/live2/
 ENV YOUTUBE_KEY ""
-
-#Twitch
-ENV TWITCH_URL rtmp://live.twitch.tv/app/
-ENV TWITCH_KEY ""
-
-#MixCloud
-ENV MIXCLOUD_URL rtmp://rtmp.mixcloud.com/broadcast/
-ENV MIXCLOUD_KEY ""
 
 COPY entrypoint.sh /entrypoint.sh
 
