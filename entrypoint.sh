@@ -12,13 +12,13 @@ else
     sed -i 's|#facebook| |g' /etc/nginx/nginx.conf 
 fi
 
-if [ -n "${RESTREAM_KEY}" ]; then
-	echo "Restream.io activated"
-	RESTREAM_KEY_esc=$(echo "$RESTREAM_KEY" | sed 's/[\*\.&]/\\&/g')
-	sed -i 's|#restream|push '"$RESTREAM_URL""$RESTREAM_KEY_esc"';|g' /etc/nginx/nginx.conf 
+if [ -n "${TWITTER_KEY}" ]; then
+	echo "Twitter activated"
+	TWITTER_KEY_esc=$(echo "$TWITTER_KEY" | sed 's/[\*\.&]/\\&/g')
+	sed -i 's|#twitter|push '"$TWITTER_URL""$TWITTER_KEY_esc"';|g' /etc/nginx/nginx.conf 
 else 
-    echo "No Restream.io stream key set... disabling"
-    sed -i 's|#restream| |g' /etc/nginx/nginx.conf 
+    echo "No Twitter stream key set... disabling"
+    sed -i 's|#twitter| |g' /etc/nginx/nginx.conf 
 fi
 
 if [ -n "${YOUTUBE_KEY}" ]; then
@@ -29,25 +29,6 @@ else
     echo "No YouTube stream key set... disabling"
     sed -i 's|#youtube| |g' /etc/nginx/nginx.conf 
 fi
-
-if [ -n "${TWITCH_KEY}" ]; then
-	echo "Twitch.tv activated"
-	TWITCH_KEY_esc=$(echo "$TWITCH_KEY" | sed 's/[\*\.&]/\\&/g')
-	sed -i 's|#twitch|push '"$TWITCH_URL""$TWITCH_KEY_esc"';|g' /etc/nginx/nginx.conf 
-else 
-    echo "No Twitch.tv stream key set... disabling"
-    sed -i 's|#twitch| |g' /etc/nginx/nginx.conf 
-fi
-
-if [ -n "${MIXCLOUD_KEY}" ]; then
-	echo "Mixcloud activated"
-	MIXCLOUD_KEY_esc=$(echo "$MIXCLOUD_KEY" | sed 's/[\*\.&]/\\&/g')
-	sed -i 's|#mixcloud|push '"$MIXCLOUD_URL""$MIXCLOUD_KEY_esc"';|g' /etc/nginx/nginx.conf 
-else 
-    echo "No Mixcloud stream key set... disabling"
-    sed -i 's|#mixcloud| |g' /etc/nginx/nginx.conf 
-fi
-
 
 stunnel4
 
