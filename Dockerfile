@@ -1,6 +1,6 @@
 FROM debian:bullseye-slim
 
-LABEL maintainer="Mark Ley - report issues & requests here https://github.com/goatie999/nginx-rtmps-docker"
+LABEL maintainer="Multiple Stream"
 
 # Update and Load initial packages
 RUN apt-get update && \
